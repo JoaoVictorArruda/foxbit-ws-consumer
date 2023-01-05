@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:joao_foxbit_test/app/utils/styles/custom_text_styles.dart';
 import 'package:joao_foxbit_test/domain/entities/currency/currency.dart';
 import 'package:joao_foxbit_test/domain/entities/currency/currency_detail.dart';
 import 'package:joao_foxbit_test/app/utils/extensions/double_extension.dart';
@@ -41,16 +42,12 @@ class CurrencyItemContainer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(getDescriptionName(currencyModel.instrumentId),style: TextStyle(
-                              fontFamily: 'Gilroy',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-                          )),
-                          Text(currencyModel.symbol,style: TextStyle(
-                              fontFamily: 'Gilroy',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400
-                          ))
+                          Text(getDescriptionName(currencyModel.instrumentId),
+                              style: CustomTextStyles.boldBlackText.copyWith(fontSize: 18)
+                          ),
+                          Text(currencyModel.symbol,
+                            style: CustomTextStyles.boldBlackText.copyWith(fontSize: 16, fontWeight: FontWeight.w400)
+                          )
                         ],
                       )
                     ],
@@ -64,12 +61,7 @@ class CurrencyItemContainer extends StatelessWidget {
                         var percentValue = currencyDetail.getPercentVariation();
                         return Text(
                           percentValue.getPercentFormat(),
-                          style: TextStyle(
-                              color: percentValue.getColor(),
-                              fontFamily: 'Gilroy',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-                          ),
+                          style: CustomTextStyles.boldBlackText.copyWith(fontSize: 18, color: percentValue.getColor()),
                           textAlign: TextAlign.end,
                         );
                       } else {
@@ -89,11 +81,7 @@ class CurrencyItemContainer extends StatelessWidget {
                             if(currencyDetail != null) {
                               return Text(
                                 currencyDetail.lastValue.formatCurrency(),
-                                style: TextStyle(
-                                    fontFamily: 'Gilroy',
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold
-                                ),
+                                style: CustomTextStyles.boldBlackText.copyWith(fontSize: 22),
                                 textAlign: TextAlign.end,
                               );
                             }
